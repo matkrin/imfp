@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>Inelastic mean free path</title>
+    <link rel="stylesheet" id="theme" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Inelastic mean free path calculator</h1>
+    <span>
+        <form>
+            <label>E = </label>
+            <input type="text" id="energy" placeholder="Electron Energy in eV">
+            <input type="submit" id="submit" value="Submit">
+        </form>
+    </span>
+    <p id="imfp"></p>
+    <div id="imfp-plot"></div>
+    <br>
+    <hr><br>
+    <p id="theme-text">Switch Theme</p>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em></em>
+    </div>
+
+</body>
+<script src="plot.js"></script>
+<script src="theme.js"></script>
+
+</html>

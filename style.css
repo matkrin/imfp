@@ -1,0 +1,145 @@
+:root {
+  --font-color: black;
+  --axis-color: black;
+  --plot-curve-color: steelblue;
+  --plot-lines-color: orange;
+  --slider-button-color: #fff;
+}
+
+[theme="dark"] {
+  --font-color: #b9bec9;
+  --axis-color: #b9bec9;
+  --plot-curve-color: steelblue;
+  --plot-lines-color: orange;
+  --slider-button-color: #57687e;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--font-color);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+span {
+  display: flex;
+  justify-content: space-between;
+}
+
+form {
+  font-size: 20px;
+  margin-left: 60px;
+  padding-left: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  font-size: 20px;
+  padding: 13px 5px;
+}
+
+#imfp {
+  font-size: 20px;
+  margin-left: 117px;
+}
+
+svg {
+  padding-left: 45px;
+}
+
+.axis line {
+  stroke: var(--axis-color);
+}
+
+.axis path {
+  stroke: var(--axis-color);
+}
+
+.axis text {
+  font-size: 14px;
+  fill: var(--axis-color);
+}
+
+.plot-text {
+  fill: var(--axis-color);
+}
+
+#plot-curve {
+  fill: none;
+  stroke: var(--plot-curve-color);
+  stroke-width: 3;
+}
+
+.plot-lines {
+  fill: var(--plot-lines-color);
+  stroke: var(--plot-lines-color);
+  stroke-dasharray: 2, 2;
+  stroke-width: 2;
+  opacity: 0.8;
+}
+
+/*Simple css to style it like a toggle switch*/
+#theme-text {
+  display: flex;
+  justify-content: center;
+}
+.theme-switch-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: var(--slider-button-color);
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #191e27;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  height: 34px;
+  width: 60px;
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
