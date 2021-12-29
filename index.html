@@ -12,25 +12,25 @@
 </head>
 
 <body>
-    <h1>Inelastic mean free path calculator</h1>
-    <span>
-        <form>
-            <label>E = </label>
-            <input type="text" id="energy" placeholder="Electron Energy in eV">
-            <input type="submit" id="submit" value="Submit">
-        </form>
-    </span>
-    <p id="imfp"></p>
-    <div id="imfp-plot"></div>
-    <br>
-    <hr><br>
+    <div class="container">
+        <h1>Inelastic mean free path calculator</h1>
+        <div>
+            <form>
+                <label>E = </label>
+                <input type="text" id="energy" placeholder="Electron Energy in eV">
+                <input type="submit" id="submit" value="Calc.">
+            </form>
+            <p id="imfp"></p>
+        </div>
+        <div id="imfp-plot"></div>
+    </div>
+    <hr>
     <p id="theme-text">Switch Theme</p>
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
             <input type="checkbox" id="checkbox" />
             <div class="slider round"></div>
         </label>
-        <em></em>
     </div>
 
 </body>
