@@ -28,7 +28,6 @@ const lambda = document.querySelector("#imfp");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  lambda.style.marginRight = "150px";
   if (isNaN(input.value) || input.value == 0) {
     lambda.style.color = "#ff392e";
     lambda.textContent = "Please enter a number";

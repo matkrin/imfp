@@ -25,6 +25,11 @@ body {
   align-items: center;
 }
 
+.interface {
+  padding-left: 30px;
+  width: 50%;
+}
+
 h1 {
   padding-bottom: 50px;
 }
