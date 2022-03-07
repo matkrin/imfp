@@ -1,5 +1,3 @@
-const energies = [...Array(10000 - 10 + 1).keys()].map((x) => x + 10);
-
 const checkbox = document.querySelector("#checkbox");
 let lightTheme = true;
 checkbox.addEventListener("change", function () {
@@ -15,12 +13,18 @@ function calcImfp(energy) {
   return imfp;
 }
 
-const imfps = energies.map((x) => calcImfp(x));
 
-const data = [];
-for (let i = 0; i < energies.length; i++) {
-  data.push({ energy: energies[i], imfp: imfps[i] });
+function constructData(startEnergy, endEnergy) {
+  const energies = [...Array(endEnergy - startEnergy + 1).keys()].map((x) => x + startEnergy);
+  const imfps = energies.map((x) => calcImfp(x));
+  const data = [];
+  for (let i = 0; i < energies.length; i++) {
+    data.push({ energy: energies[i], imfp: imfps[i] });
+  }
+  return data;
 }
+
+const data = constructData(10, 10000);
 
 const form = document.querySelector("form");
 const input = document.querySelector('input[type="text"]');
@@ -70,7 +74,7 @@ const svg = d3
 // X axis
 const xScale = d3
   .scaleLog()
-  .domain([energies[0], energies[energies.length - 1]])
+  .domain([data[0].energy, data[data.length-1].energy])
   .range([0, width]);
 svg
   .append("g")
@@ -165,7 +169,7 @@ svg
       .y((d) => yScale(d.imfp))
   );
 
-// Rectangle on top of the svg for handling the mouse position
+// Rectangle layer on top of the svg for handling the mouse position
 svg
   .append("rect")
   .style("fill", "none")
