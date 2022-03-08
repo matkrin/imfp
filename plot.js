@@ -1,34 +1,8 @@
-const checkbox = document.querySelector("#checkbox");
-let lightTheme = true;
-checkbox.addEventListener("change", function () {
-  if (this.checked) {
-    lightTheme = false;
-  } else {
-    lightTheme = true;
-  }
-});
-
-function calcImfp(energy) {
-  imfp = 143 / (energy * energy) + 0.054 * Math.sqrt(energy);
-  return imfp;
-}
-
-
-function constructData(startEnergy, endEnergy) {
-  const energies = [...Array(endEnergy - startEnergy + 1).keys()].map((x) => x + startEnergy);
-  const imfps = energies.map((x) => calcImfp(x));
-  const data = [];
-  for (let i = 0; i < energies.length; i++) {
-    data.push({ energy: energies[i], imfp: imfps[i] });
-  }
-  return data;
-}
-
-const data = constructData(10, 10000);
-
 const form = document.querySelector("form");
 const input = document.querySelector('input[type="text"]');
 const lambda = document.querySelector("#imfp");
+
+const data = constructData(10, 10000);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -36,9 +10,9 @@ form.addEventListener("submit", (e) => {
     lambda.style.color = "#ff392e";
     lambda.textContent = "Please enter a number";
 
-    input.style.backgroundColor = lightTheme ? "#ffe2e1" : "#6d1b25";
+    input.style.backgroundColor = "#ffe2e1";
   } else {
-    lambda.style.color = lightTheme ? "black" : "white";
+    lambda.style.color = "black";
     lambda.textContent = `\u{3bb} = ${calcImfp(input.value).toFixed(2)} nm`;
 
     input.style.border = "none";
@@ -50,6 +24,22 @@ form.addEventListener("submit", (e) => {
     }
   }
 });
+
+
+function calcImfp(energy) {
+  imfp = 143 / (energy * energy) + 0.054 * Math.sqrt(energy);
+  return imfp;
+}
+
+function constructData(startEnergy, endEnergy) {
+  const energies = [...Array(endEnergy - startEnergy + 1).keys()].map(x => x + startEnergy);
+  const imfps = energies.map(energy => calcImfp(energy));
+  const data = [];
+  for (let i = 0; i < energies.length; i++) {
+    data.push({ energy: energies[i], imfp: imfps[i] });
+  }
+  return data;
+}
 
 // D3 SVG
 // dimensions and margins
@@ -214,15 +204,15 @@ function mouseout() {
 }
 
 function addLines(energy) {
-  let index = energies.indexOf(Math.round(energy));
+  let index = data.map(obj => obj.energy).indexOf(Math.round(energy));
   svg
     .append("g")
     .datum(data)
     .append("line")
     .attr("class", "plot-lines")
-    .attr("x1", xScale(data[index].energy)) //<<== change your code here
+    .attr("x1", xScale(data[index].energy))
     .attr("y1", 0)
-    .attr("x2", xScale(data[index].energy)) //<<== and here
+    .attr("x2", xScale(data[index].energy))
     .attr("y2", height);
 
   svg
@@ -230,8 +220,8 @@ function addLines(energy) {
     .datum(data)
     .append("line")
     .attr("class", "plot-lines")
-    .attr("x1", 0) //<<== change your code here
+    .attr("x1", 0)
     .attr("y1", yScale(data[index].imfp))
-    .attr("x2", width) //<<== and here
+    .attr("x2", width)
     .attr("y2", yScale(data[index].imfp));
 }
