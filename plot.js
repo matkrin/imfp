@@ -1,8 +1,8 @@
 const form = document.querySelector("form");
 const input = document.querySelector('input[type="text"]');
-const lambda = document.querySelector("#imfp");
+const lambda = document.querySelector("#lambda");
 
-const data = constructData(10, 10000);
+const data = createData(10, 10000);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -31,7 +31,7 @@ function calcImfp(energy) {
   return imfp;
 }
 
-function constructData(startEnergy, endEnergy) {
+function createData(startEnergy, endEnergy) {
   const energies = [...Array(endEnergy - startEnergy + 1).keys()].map(x => x + startEnergy);
   const imfps = energies.map(energy => calcImfp(energy));
   const data = [];

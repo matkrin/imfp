@@ -6,25 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <title>Inelastic mean free path</title>
+    <title>Universal Curve</title>
     <link rel="stylesheet" id="theme" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Inelastic mean free path calculator</h1>
+        <h1>Universal Curve</h1>
         <div class="interface">
             <form>
                 <label>E = </label>
                 <input type="text" id="energy" placeholder="Electron Energy in eV">
                 <input type="submit" id="submit" value="Calc.">
             </form>
-            <p id="imfp"></p>
+            <p id="lambda"></p>
         </div>
         <div id="imfp-plot"></div>
     </div>
-    <hr>
 </body>
 <script src="plot.js"></script>
 </html>
